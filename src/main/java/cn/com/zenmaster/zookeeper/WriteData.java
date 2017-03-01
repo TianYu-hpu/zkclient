@@ -2,13 +2,14 @@ package cn.com.zenmaster.zookeeper;
 
 import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.serialize.SerializableSerializer;
+import org.apache.zookeeper.data.Stat;
 
 /**
- * 创建会话
+ * 写入数据
  * @author TianYu
  *
  */
-public class CreateSession {
+public class WriteData {
 
 	public static void main(String[] args) {
 		/*
@@ -17,6 +18,10 @@ public class CreateSession {
 		 */
 		ZkClient zc = new ZkClient("192.168.0.35:2181", 10000, 10000, new SerializableSerializer());
 		System.out.println("连接成功");
+		User user = new User("asdf", "12345678890");
+		Stat stat = zc.writeDataReturnStat("/zkclient", user, -1);
+		
+		System.out.println("stat" + stat);
 	}
 	
 

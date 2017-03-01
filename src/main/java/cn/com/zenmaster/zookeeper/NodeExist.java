@@ -4,11 +4,11 @@ import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.serialize.SerializableSerializer;
 
 /**
- * 创建会话
+ * 节点是否存在
  * @author TianYu
  *
  */
-public class CreateSession {
+public class NodeExist {
 
 	public static void main(String[] args) {
 		/*
@@ -17,6 +17,10 @@ public class CreateSession {
 		 */
 		ZkClient zc = new ZkClient("192.168.0.35:2181", 10000, 10000, new SerializableSerializer());
 		System.out.println("连接成功");
+		
+		boolean result = zc.exists("/zkclient");
+		
+		System.out.println("是否存在:" + result);
 	}
 	
 

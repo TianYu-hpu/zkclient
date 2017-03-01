@@ -4,11 +4,11 @@ import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.serialize.SerializableSerializer;
 
 /**
- * 创建会话
+ * 获取数据
  * @author TianYu
  *
  */
-public class CreateSession {
+public class GetData {
 
 	public static void main(String[] args) {
 		/*
@@ -17,6 +17,10 @@ public class CreateSession {
 		 */
 		ZkClient zc = new ZkClient("192.168.0.35:2181", 10000, 10000, new SerializableSerializer());
 		System.out.println("连接成功");
+		
+		User user = zc.readData("/zkclient");
+		
+		System.out.println("username:" + user.getUsername() + "---password:" + user.getPassword());
 	}
 	
 

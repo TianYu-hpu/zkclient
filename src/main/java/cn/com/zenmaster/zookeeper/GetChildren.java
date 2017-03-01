@@ -1,14 +1,16 @@
 package cn.com.zenmaster.zookeeper;
 
+import java.util.List;
+
 import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.serialize.SerializableSerializer;
 
 /**
- * 创建会话
+ * 获取子节点
  * @author TianYu
  *
  */
-public class CreateSession {
+public class GetChildren {
 
 	public static void main(String[] args) {
 		/*
@@ -17,6 +19,10 @@ public class CreateSession {
 		 */
 		ZkClient zc = new ZkClient("192.168.0.35:2181", 10000, 10000, new SerializableSerializer());
 		System.out.println("连接成功");
+		
+		List<String> children = zc.getChildren("/zkclient");
+		
+		System.out.println("children:" + children.toString());
 	}
 	
 

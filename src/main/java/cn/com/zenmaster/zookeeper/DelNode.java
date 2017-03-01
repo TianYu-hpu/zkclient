@@ -4,11 +4,11 @@ import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.serialize.SerializableSerializer;
 
 /**
- * 创建会话
+ * 删除节点
  * @author TianYu
  *
  */
-public class CreateSession {
+public class DelNode {
 
 	public static void main(String[] args) {
 		/*
@@ -17,6 +17,14 @@ public class CreateSession {
 		 */
 		ZkClient zc = new ZkClient("192.168.0.35:2181", 10000, 10000, new SerializableSerializer());
 		System.out.println("连接成功");
+		
+		//删除单个节点
+		boolean result1 = zc.delete("zcclient");
+		//级联删除
+		boolean result2 = zc.deleteRecursive("zcclient");
+		
+		System.out.println(result1);
+		System.out.println(result2);
 	}
 	
 
