@@ -1,7 +1,11 @@
 package cn.com.zenmaster.zookeeper;
 
-public class User {
+import java.io.Serializable;
 
+public class User implements Serializable {
+
+	private static final long serialVersionUID = 1668030467044427746L;
+	
 	private String username;
 	private String password;
 	
